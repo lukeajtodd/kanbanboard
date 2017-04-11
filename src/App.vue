@@ -10,24 +10,35 @@ import NewButton from './components/NewButton.vue'
 import Board from './components/Board.vue'
 export default {
   name: 'app',
-  vuex: {
-    getters: {
-      getTasks: state => state.tasks
-    }
-  },
   data () {
     return {
-      tasks: this.getTasks
+      tasks: {}
     }
   },
   components: {
     Board,
     NewButton
+  },
+  methods: {
+    async getTasks() {
+      let response = await fetch('http://localhost:3333/api/tasks');
+      let data = await response.json();
+      return data;
+    }
+  },
+  mounted() {
+    this.getTasks().then(tasks => {
+      this.tasks = tasks;
+    })
   }
 }
 </script>
 
 <style lang="scss">
+body {
+  overflow-x: hidden;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,14 +1,20 @@
 <template>
-    <li class="task">
+    <li class="task" :id="id">
         <h2>{{ name }}</h2>
         <p>{{ description }}</p>
+        <span class="close" @click="removeTask">x</span>
     </li>
 </template>
 
 <script>
     export default {
         name: 'task',
-        props: [ 'name', 'description' ]
+        props: [ 'id', 'name', 'description', 'removeTask' ],
+        mounted() {
+            if (this.name.includes('TAMA')) {
+                document.getElementById(this.id).style.background = 'pink';
+            }
+        }
     }
 </script>
 
@@ -23,5 +29,10 @@
         margin: 0;
 
         background: yellow;
+    }
+
+    .close {
+        top: 0; right: 0;
+        cursor: pointer;
     }
 </style>

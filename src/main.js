@@ -1,62 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Vuex from 'vuex'
+import VueResource from 'vue-resource'
 
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  state: {
-    tasks: {
-        todoList: [
-            { name: 'task 1', description: 'temp description' },
-            { name: 'task 2', description: 'temp description' },
-            { name: 'task 3', description: 'temp description' },
-            { name: 'task 4', description: 'temp description' }
-        ],
-        analysisList: [
-            
-        ],
-        devList: [
-            
-        ],
-        blockedList: [
-            
-        ],
-        CRList: [
-            
-        ],
-        readyTestList: [
-            
-        ],
-        inTestList: [
-            
-        ],
-        promoteList: [
-            
-        ],
-        mergeList: [
-            
-        ],
-        mergedList: [
-
-        ],
-        releaseList: [
-
-        ],
-        doneList: [
-
-        ]
-      }
-  },
-  mutations: {
-    addTask: function(state, task) {
-      state.todoList.push(task)
-    }
-  }
-})
+Vue.use(VueResource)
+Vue.http.options.root = 'http://localhost:3333/api';
 
 new Vue({
   el: '#app',
-  store,
   render: h => h(App)
 })

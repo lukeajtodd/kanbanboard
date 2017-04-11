@@ -1,7 +1,7 @@
 <template>
     <div class="newTask">
         <h2>New Task:</h2>
-        <input type="text" class="name">
+        <input type="text" v-model="name" class="name">
         <input type="text" v-model="description">
         <button @click="createNewTask">NEW</button>
     </div>
@@ -19,10 +19,15 @@
         },
         methods: {
             createNewTask: function() {
+                let id = (Math.floor(Math.random() * 122)).toString();
                 let name = this.name;
                 let description = this.description;
 
-                store.commit('addTask', { name, description });
+                let newTaskList = this.tasks['todoList'].push({ id, name, description });
+
+                this.$http.post('tasks', JSON.stringify(newTaskList)).then((response) => {});
+                this.name = '';
+                this.description = '';
             }
         }
     }

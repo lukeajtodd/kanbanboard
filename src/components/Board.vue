@@ -1,75 +1,75 @@
 <template>
     <div class="board drag">
-        <div class="board__column">
+        <div class="board__column" id="todoList">
             <h1 class="column_header">TO DO</h1>
             <draggable v-model="tasks.todoList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.todoList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.todoList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="analysisList">
             <h1 class="column_header">ANALYSIS</h1>
             <draggable v-model="tasks.analysisList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.analysisList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.analysisList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="devList">
             <h1 class="column_header">DEV</h1>
             <draggable v-model="tasks.devList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.devList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.devList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="blockedList">
             <h1 class="column_header">BLOCKED</h1>
             <draggable v-model="tasks.blockedList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.blockedList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.blockedList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="CRList">
             <h1 class="column_header">CR</h1>
             <draggable v-model="tasks.CRList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.CRList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.CRList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="readyTestList">
             <h1 class="column_header">READY FOR TEST</h1>
             <draggable v-model="tasks.readyTestList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.readyTestList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.readyTestList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="inTestList">
             <h1 class="column_header">IN TESTING</h1>
             <draggable v-model="tasks.inTestList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.inTestList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.inTestList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="promoteList">
             <h1 class="column_header">READY TO PROMOTE</h1>
             <draggable v-model="tasks.promoteList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.promoteList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.promoteList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="mergeList">
             <h1 class="column_header">READY TO MERGE</h1>
             <draggable v-model="tasks.mergeList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.mergeList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.mergeList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column"  id="mergedList">
             <h1 class="column_header">MERGED</h1>
             <draggable v-model="tasks.mergedList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.mergedList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.mergedList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column"  id="releaseList">
             <h1 class="column_header">RELEASE TEST</h1>
             <draggable v-model="tasks.releaseList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.releaseList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.releaseList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
-        <div class="board__column">
+        <div class="board__column" id="doneList">
             <h1 class="column_header">DONE</h1>
             <draggable v-model="tasks.doneList" :options="{ group: 'tasks' }" class="column__list">
-                <task v-for="item in tasks.doneList" :name="item.name" :description="item.description"></task>
+                <task :removeTask="removeTask" v-for="item in tasks.doneList" :id="item.id" :name="item.name" :description="item.description"></task>
             </draggable>
         </div>
     </div>
@@ -84,6 +84,22 @@
         components: {
             Task,
             draggable
+        },
+        methods: {
+            removeTask(event) {
+                let targetId = event.target.parentElement.id;
+                let parent = event.target.parentElement.parentElement.parentElement.id;
+                this.tasks[parent].forEach((item, index) => {
+                    if (item.id === targetId) {
+                        this.tasks[parent].splice(index, 1);
+                    }
+                });
+            }
+        },
+        beforeUpdate() {
+            this.$http.post('tasks', JSON.stringify(this.tasks)).then((response) => {
+                console.log(response);
+            })
         }
     }
 </script>
@@ -98,6 +114,7 @@
         padding: 0;
         overflow-x: scroll;
         white-space: nowrap;
+        width: 80vw;
     }
 
     .column__header {
@@ -127,7 +144,8 @@
     }
 
     .column__list {
-        height: calc(100vh - 48px);
+        min-height: 75vh;
+        height: 100%;
         position: relative;
         padding-top: 40px;
     }
