@@ -12,7 +12,9 @@
         props: [ 'id', 'name', 'description', 'removeTask' ],
         mounted() {
             if (this.name.includes('TAMA')) {
-                document.getElementById(this.id).style.background = 'pink';
+                document.getElementById(this.id).style.background = '#c81e6e';
+            } else if (this.name.includes('SALES')) {
+                document.getElementById(this.id).style.background = '#676d70';
             }
         }
     }
@@ -32,6 +34,7 @@
     }
 
     .close {
+        position: absolute;
         top: 0; right: 0;
         cursor: pointer;
     }
