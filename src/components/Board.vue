@@ -95,6 +95,11 @@
                     }
                 });
             }
+        },
+        beforeUpdate() {
+            this.$http.post('tasks', JSON.stringify(this.tasks)).then((response) => {
+                console.log(response);
+            })
         }
     }
 </script>
