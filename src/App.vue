@@ -8,6 +8,7 @@
 <script>
 import NewButton from './components/NewButton.vue'
 import Board from './components/Board.vue'
+import hostIp from './serverIp'
 export default {
   name: 'app',
   data () {
@@ -21,7 +22,7 @@ export default {
   },
   methods: {
     async getTasks() {
-      let response = await fetch('http://localhost:3333/api/tasks');
+      let response = await fetch(`http://${hostIp}:3333/api/tasks`);
       let data = await response.json();
       return data;
     }
