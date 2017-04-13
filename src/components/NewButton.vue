@@ -23,7 +23,10 @@
                 let name = this.name;
                 let description = this.description;
 
-                let newTaskList = this.tasks['todoList'].push({ id, name, description });
+                let newTaskList = this.tasks['todoList'];
+                newTaskList.push({ id, name, description });
+
+                console.log(newTaskList);
 
                 this.$http.post('tasks', JSON.stringify(newTaskList)).then((response) => {});
                 this.name = '';
