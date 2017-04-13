@@ -1,1 +1,0 @@
-export default ip = '10.3.2.52';
