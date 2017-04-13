@@ -22,9 +22,10 @@
                 let id = (Math.floor(Math.random() * 122)).toString();
                 let name = this.name;
                 let description = this.description;
-
-                let newTaskList = this.tasks['todoList'];
-                newTaskList.push({ id, name, description });
+                let entryList = this.tasks['todoList'];
+                let newTaskList = this.tasks;
+                entryList.push({ id, name, description });
+                newTaskList['todoList'] = entryList;
 
                 console.log(newTaskList);
 
