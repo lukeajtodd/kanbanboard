@@ -29,7 +29,9 @@
 
                 console.log(newTaskList);
 
-                this.$http.post('tasks', JSON.stringify(newTaskList)).then((response) => {});
+                this.$http.post('tasks', JSON.stringify(newTaskList)).then((response) => {
+                    console.log(response);
+                });
                 this.name = '';
                 this.description = '';
             }
