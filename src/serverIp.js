@@ -1,1 +1,1 @@
-export const ip = '10.3.2.52';
+export default ip = '10.3.2.52';
