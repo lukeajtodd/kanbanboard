@@ -21,12 +21,12 @@ export default {
   },
   methods: {
     async getTasks() {
-      let response = await fetch(`http://10.3.2.52:3333/api/tasks`);
+      let response = await fetch(`http://localhost:3333/api/tasks`);
       let data = await response.json();
       return data;
     }
   },
-  mounted() {
+  beforeMount() {
     this.getTasks().then(tasks => {
       this.tasks = tasks;
     })

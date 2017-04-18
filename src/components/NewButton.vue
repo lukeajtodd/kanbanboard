@@ -22,16 +22,17 @@
                 let id = (Math.floor(Math.random() * 122)).toString();
                 let name = this.name;
                 let description = this.description;
+
                 let entryList = this.tasks['todoList'];
                 let newTaskList = this.tasks;
+
                 entryList.push({ id, name, description });
                 newTaskList['todoList'] = entryList;
-
-                console.log(newTaskList);
 
                 this.$http.post('tasks', JSON.stringify(newTaskList)).then((response) => {
                     console.log(response);
                 });
+
                 this.name = '';
                 this.description = '';
             }
