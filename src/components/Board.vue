@@ -7,11 +7,13 @@
                 :options="{ group: 'tasks' }"
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.todoList" 
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description" 
+                    :taskState="item.state"
                     :key="item.id">
                 </task>
             </draggable>
@@ -23,11 +25,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.analysisList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id">
                 </task>
             </draggable>
@@ -39,11 +43,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.devList" 
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description" 
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -54,11 +60,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.blockedList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -69,11 +77,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.CRList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -84,11 +94,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.readyTestList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -99,11 +111,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.inTestList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -115,10 +129,12 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask" 
+                    :pushState="pushState"
                     v-for="item in tasks.promoteList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -129,11 +145,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.mergeList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -144,11 +162,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.mergedList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -159,11 +179,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.releaseList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -174,11 +196,13 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :pushState="pushState"
                     v-for="item in tasks.doneList" 
                     :id="item.id" 
                     :name="item.name" 
-                    :description="item.description" 
+                    :description="item.description"
+                    :taskState="item.state"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -195,19 +219,50 @@
             Task,
             draggable
         },
+        beforeUpdate() {
+            this.pushState();
+        },
         methods: {
             removeTask(event) {
-                let targetId = event.target.parentElement.id;
-                let parent = event.target.parentElement.parentElement.parentElement.id;
+                let targetId = this.getClosest(event.target, '.task').id;
+                let parent = this.getClosest(event.target, '.board__column').id;
                 this.tasks[parent].forEach((item, index) => {
                     if (item.id === targetId) {
                         this.tasks[parent].splice(index, 1);
                     }
                 });
 
+                this.pushState();
+            },
+            pushState() {
+                console.log('hello');
                 this.$http.post('tasks', JSON.stringify(this.tasks)).then((response) => {
                     console.log(response);
-                })
+                });
+            },
+            getClosest(elem, selector) {
+                // Element.matches() polyfill
+                if (!Element.prototype.matches) {
+                    Element.prototype.matches =
+                        Element.prototype.matchesSelector ||
+                        Element.prototype.mozMatchesSelector ||
+                        Element.prototype.msMatchesSelector ||
+                        Element.prototype.oMatchesSelector ||
+                        Element.prototype.webkitMatchesSelector ||
+                        function(s) {
+                            var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+                                i = matches.length;
+                            while (--i >= 0 && matches.item(i) !== this) {}
+                            return i > -1;
+                        };
+                }
+
+                // Get closest match
+                for ( ; elem && elem !== document; elem = elem.parentNode ) {
+                    if ( elem.matches( selector ) ) return elem;
+                }
+
+                return null;
             }
         }
     }
@@ -219,7 +274,7 @@
         flex-wrap: nowrap;
         position: relative;
         left: 200px;
-        border: 1px solid black;
+        border: 2px solid black;
         padding: 0;
         overflow-x: scroll;
         white-space: nowrap;
@@ -231,6 +286,7 @@
     }
 
     .board__column {
+        text-align: center;
         position: relative;
         padding: 0 10px;
         margin: 0;
