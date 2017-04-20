@@ -1,6 +1,6 @@
 <template>
     <li class="task" :id="id">
-        <h2>{{ name }}</h2>
+        <a href=`http://jira.internal.plus.net/browse/${name}`><h2>{{ name }}</h2>
         <p>{{ description }}</p>
         <p class="task__state" v-if="taskState != undefined">{{ taskState }}</p>
         <span class="close" @click="removeTask"><span class="circle circle--small circle--red"></span></span>
