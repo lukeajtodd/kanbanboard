@@ -289,6 +289,7 @@
         text-align: center;
         position: relative;
         padding: 0 10px;
+        padding-bottom: 20px;
         margin: 0;
         white-space: normal;
         min-width: 250px;
@@ -310,7 +311,6 @@
 
     .column__list {
         min-height: 75vh;
-        height: 100%;
         position: relative;
         padding-top: 40px;
     }
