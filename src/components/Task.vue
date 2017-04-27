@@ -1,8 +1,7 @@
 <template>
-    <li class="task" :id="id">
+    <li :class="{ task: true, 'task--pink': type == 'bug', 'task--yellow': type == 'story'}" :id="id">
         <h2><a target="_blank" :href="'http://jira.internal.plus.net/browse/' + name">{{ name }}</a></h2>
         <p>{{ description }}</p>
-        <p class="task__state" v-if="taskState != undefined">{{ taskState }}</p>
         <span class="close" @click="removeTask"><span class="circle circle--small circle--red"></span></span>
     </li>
 </template>
@@ -10,7 +9,7 @@
 <script>
     export default {
         name: 'task',
-        props: [ 'id', 'name', 'description', 'removeTask', 'taskState' ]
+        props: [ 'id', 'name', 'description', 'removeTask', 'type' ]
     }
 </script>
 
@@ -33,12 +32,12 @@
         border-radius: 8px;
     }
 
-    .task--tama {
-        background: #c81e6e;
+    .task--pink {
+        background: #ff97d2;
     }
 
-    .task--sales {
-        background: #38bcde;
+    .task--yellow {
+        background: #ffffa5;
     }
 
     h2 {

@@ -3,7 +3,10 @@
         <form @submit="createNewTask">
             <label for="newTask__name-input">task name<input id="newTask__name-input" type="text" v-model="name" class="name"></label>
             <label for="newTask__description-input">description<input id="newTask__description-input" type="text" v-model="description"></label>
-            <label for="newTask__state-input">state<input id="newTask__state-input" type="text" v-model="taskState"></label>
+            <div class="newTask__colours">
+                <a class="newTask__colours-button newTask__colours-button--pink" @click="setType('bug')">BUG</a>
+                <a class="newTask__colours-button newTask__colours-button--yellow" @click="setType('story')">STORY</a>
+            </div>
             <button type="submit">-- NEW --</button>
         </form>
     </div>
@@ -17,22 +20,30 @@
             return {
                 name: '',
                 description: '',
-                taskState: ''
+                type: ''
             }
         },
         methods: {
+            setType: function(type) {
+                this.type = type;
+            },
             createNewTask: function(e) {
                 e.preventDefault();
                 let id = (Math.floor(Math.random() * 122)).toString();
                 let name = this.name;
                 let description = this.description;
-                let state = this.taskState;
+                let type;
+                if (this.type == '') {
+                    type = 'story';
+                } else {
+                    type = this.type;
+                }
 
-                this.$socket.emit('addTask', { id, name, description, state });
+                this.$socket.emit('addTask', { id, name, description, type });
 
                 this.name = '';
                 this.description = '';
-                this.taskState = '';
+                this.type = '';
             }
         }
     }
@@ -68,6 +79,31 @@
         margin: 0;
         margin-top: 10px;
         margin-left: 3%;
+    }
+
+    .newTask__colours-button {
+        text-align: center;
+        color: #000;
+        width: 94%;
+        margin-left: 3%;
+        font-weight: bold;
+        padding: 2px 0;
+        margin-bottom: 5px;
+        display: block;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+    .newTask__colours-button:active {
+        box-shadow: inset #333 2px 2px;
+    }
+
+    .newTask__colours-button--pink {
+        background: #ff97d2;
+    }
+
+    .newTask__colours-button--yellow {
+        background: #ffffa5;
     }
 
     buton:active {

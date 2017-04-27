@@ -13,7 +13,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description" 
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id">
                 </task>
             </draggable>
@@ -31,7 +31,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id">
                 </task>
             </draggable>
@@ -49,7 +49,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description" 
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -66,7 +66,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -83,7 +83,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -100,7 +100,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -117,7 +117,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -134,7 +134,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -151,7 +151,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -168,7 +168,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -185,7 +185,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
@@ -202,7 +202,7 @@
                     :id="item.id" 
                     :name="item.name" 
                     :description="item.description"
-                    :taskState="item.state"
+                    :type="item.type"
                     :key="item.id"></task>
             </draggable>
         </div>
