@@ -28,19 +28,7 @@
                 let description = this.description;
                 let state = this.taskState;
 
-                let entryList = this.tasks['todoList'];
-                let newTaskList = this.tasks;
-
-                if (state != '') {
-                    entryList.push({ id, name, description, state });
-                } else {
-                    entryList.push({ id, name, description });
-                }
-                newTaskList['todoList'] = entryList;
-
-                this.$http.post('tasks', JSON.stringify(newTaskList)).then((response) => {
-                    console.log(response);
-                });
+                this.$socket.emit('addTask', { id, name, description, state });
 
                 this.name = '';
                 this.description = '';

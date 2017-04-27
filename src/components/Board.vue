@@ -4,11 +4,11 @@
             <h1 class="column_header">TO DO</h1>
             <draggable 
                 v-model="tasks.todoList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }"
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.todoList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -21,12 +21,12 @@
         <div class="board__column" id="analysisList">
             <h1 class="column_header">ANALYSIS</h1>
             <draggable 
-                v-model="tasks.analysisList" 
+                v-model="tasks.analysisList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.analysisList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -40,11 +40,11 @@
             <h1 class="column_header">DEV</h1>
             <draggable 
                 v-model="tasks.devList" 
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.devList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -56,12 +56,12 @@
         <div class="board__column" id="blockedList">
             <h1 class="column_header">BLOCKED</h1>
             <draggable 
-                v-model="tasks.blockedList" 
+                v-model="tasks.blockedList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.blockedList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -73,12 +73,12 @@
         <div class="board__column" id="CRList">
             <h1 class="column_header">CR</h1>
             <draggable 
-                v-model="tasks.CRList" 
+                v-model="tasks.CRList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.CRList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -90,12 +90,12 @@
         <div class="board__column" id="readyTestList">
             <h1 class="column_header">READY FOR TEST</h1>
             <draggable 
-                v-model="tasks.readyTestList" 
+                v-model="tasks.readyTestList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.readyTestList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -107,12 +107,12 @@
         <div class="board__column" id="inTestList">
             <h1 class="column_header">IN TESTING</h1>
             <draggable 
-                v-model="tasks.inTestList" 
+                v-model="tasks.inTestList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.inTestList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -124,12 +124,12 @@
         <div class="board__column" id="promoteList">
             <h1 class="column_header">READY TO PROMOTE</h1>
             <draggable 
-                v-model="tasks.promoteList" 
+                v-model="tasks.promoteList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask" 
-                    :pushState="pushState"
                     v-for="item in tasks.promoteList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -141,12 +141,12 @@
         <div class="board__column" id="mergeList">
             <h1 class="column_header">READY TO MERGE</h1>
             <draggable 
-                v-model="tasks.mergeList" 
+                v-model="tasks.mergeList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.mergeList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -158,12 +158,12 @@
         <div class="board__column"  id="mergedList">
             <h1 class="column_header">MERGED</h1>
             <draggable 
-                v-model="tasks.mergedList" 
+                v-model="tasks.mergedList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.mergedList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -175,12 +175,12 @@
         <div class="board__column"  id="releaseList">
             <h1 class="column_header">RELEASE TEST</h1>
             <draggable 
-                v-model="tasks.releaseList" 
+                v-model="tasks.releaseList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.releaseList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -192,12 +192,12 @@
         <div class="board__column" id="doneList">
             <h1 class="column_header">DONE</h1>
             <draggable 
-                v-model="tasks.doneList" 
+                v-model="tasks.doneList"
+                @end="itemMoved"
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
-                    :pushState="pushState"
                     v-for="item in tasks.doneList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -219,26 +219,15 @@
             Task,
             draggable
         },
-        beforeUpdate() {
-            this.pushState();
-        },
         methods: {
             removeTask(event) {
                 let targetId = this.getClosest(event.target, '.task').id;
-                let parent = this.getClosest(event.target, '.board__column').id;
-                this.tasks[parent].forEach((item, index) => {
-                    if (item.id === targetId) {
-                        this.tasks[parent].splice(index, 1);
-                    }
-                });
-
-                this.pushState();
+                let parentId = this.getClosest(event.target, '.board__column').id;
+                
+                this.$socket.emit('removeTask', { targetId, parentId });
             },
-            pushState() {
-                console.log('hello');
-                this.$http.post('tasks', JSON.stringify(this.tasks)).then((response) => {
-                    console.log(response);
-                });
+            itemMoved() {
+                this.$socket.emit('updateTasks', this.tasks);
             },
             getClosest(elem, selector) {
                 // Element.matches() polyfill

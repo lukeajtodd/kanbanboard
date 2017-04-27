@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "vue": "^2.2.1",
-    "vue-draggable": "^1.0.0-rc.1"
+    "vue-draggable": "^1.0.0-rc.1",
+    "vue-socket.io": "^2.1.1-a"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

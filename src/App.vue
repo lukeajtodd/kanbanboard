@@ -24,12 +24,19 @@ export default {
       let response = await fetch(`http://localhost:3333/api/tasks`);
       let data = await response.json();
       return data;
+    },
+    updateTheStuff() {
+      this.$socket.emit('updateTasks');
     }
   },
   beforeMount() {
+    this.$options.sockets.updateTasks = (data) => {
+      this.tasks = data;
+    };
     this.getTasks().then(tasks => {
       this.tasks = tasks;
-    })
+      this.$socket.emit('updateTasks', this.tasks);
+    });
   }
 }
 </script>
