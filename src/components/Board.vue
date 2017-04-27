@@ -9,6 +9,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.todoList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -27,6 +28,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.analysisList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -45,6 +47,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.devList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -62,6 +65,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.blockedList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -79,6 +83,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.CRList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -96,6 +101,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.readyTestList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -113,6 +119,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.inTestList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -129,7 +136,8 @@
                 :options="{ group: 'tasks' }" 
                 class="column__list">
                 <task 
-                    :removeTask="removeTask" 
+                    :removeTask="removeTask"
+                    :editTask="editTask" 
                     v-for="item in tasks.promoteList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -147,6 +155,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.mergeList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -164,6 +173,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.mergedList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -181,6 +191,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.releaseList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -198,6 +209,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :editTask="editTask"
                     v-for="item in tasks.doneList" 
                     :id="item.id" 
                     :name="item.name" 
@@ -225,6 +237,37 @@
                 let parentId = this.getClosest(event.target, '.board__column').id;
                 
                 this.$socket.emit('removeTask', { targetId, parentId });
+            },
+            editTask(event) {
+                let thisTask = this.getClosest(event.target, '.task');
+                let parentId = this.getClosest(event.target, '.board__column').id;
+                let taskHeader = thisTask.querySelector('.task__header a');
+                let taskDesc = thisTask.querySelector('.task__description');
+                let input = [ document.createElement('input'), document.createElement('input') ];
+                let button = document.createElement('button');
+
+                input[0].value = taskHeader.text;
+                input[1].value = taskDesc.innerHTML;
+                button.innerHTML = 'GO';
+
+                button.style.display = 'block';
+                button.onclick = () => {
+                    this.$socket.emit('editTask', {
+                        parentId: parentId,
+                        id: thisTask.id,
+                        name: input[0].value,
+                        description: input[1].value
+                    });
+
+                    thisTask.removeChild(button);
+                    thisTask.removeChild(input[0]);
+                    thisTask.removeChild(input[1]);
+                }
+
+                thisTask.insertAdjacentElement('beforeend', input[0]);
+                thisTask.insertAdjacentElement('beforeend', input[1]);
+                thisTask.insertAdjacentElement('beforeend', button);
+
             },
             itemMoved() {
                 this.$socket.emit('updateTasks', this.tasks);

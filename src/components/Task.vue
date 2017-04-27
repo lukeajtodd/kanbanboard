@@ -1,19 +1,24 @@
 <template>
     <li :class="{ task: true, 'task--pink': type == 'bug', 'task--yellow': type == 'story'}" :id="id">
-        <h2><a target="_blank" :href="'http://jira.internal.plus.net/browse/' + name">{{ name }}</a></h2>
-        <p>{{ description }}</p>
+        <h2 class="task__header"><a target="_blank" :href="'http://jira.internal.plus.net/browse/' + name">{{ name }}</a></h2>
+        <p class="task__description">{{ description }}</p>
         <span class="close" @click="removeTask"><span class="circle circle--small circle--red"></span></span>
+        <span class="edit" @click="editTask"><span class="">&#9998;</span></span>
     </li>
 </template>
 
 <script>
     export default {
         name: 'task',
-        props: [ 'id', 'name', 'description', 'removeTask', 'type' ]
+        props: [ 'id', 'name', 'description', 'removeTask', 'editTask', 'type' ]
     }
 </script>
 
 <style lang="scss" scoped>
+    .block {
+        display: block;
+    }
+    
     .task {
         text-align: left;
         color: #000;
@@ -54,11 +59,21 @@
         margin-top: 10px;
     }
 
-    .close {
+    .close, .edit {
         position: absolute;
-        top: 5px; right: 5px;
+        top: 5px;
         padding: 2px;
         cursor: pointer;
+    }
+
+    .close {
+        right: 5px;
+    }
+
+    .edit {
+        top: auto;
+        bottom: 0px;
+        right: 5px;
     }
 
     .circle {

@@ -4,8 +4,8 @@
             <label for="newTask__name-input">task name<input id="newTask__name-input" type="text" v-model="name" class="name"></label>
             <label for="newTask__description-input">description<input id="newTask__description-input" type="text" v-model="description"></label>
             <div class="newTask__colours">
-                <a class="newTask__colours-button newTask__colours-button--pink" @click="setType('bug')">BUG</a>
-                <a class="newTask__colours-button newTask__colours-button--yellow" @click="setType('story')">STORY</a>
+                <a class="newTask__colours-button newTask__colours-button--pink" @click="setType('bug')">BUG &#9762;</a>
+                <a class="newTask__colours-button newTask__colours-button--yellow" @click="setType('story')">STORY &#128214;</a>
             </div>
             <button type="submit">-- NEW --</button>
         </form>
