@@ -44,6 +44,7 @@
                 this.name = '';
                 this.description = '';
                 this.type = '';
+                document.getElementById('newTask__name-input').focus();
             }
         }
     }
@@ -68,17 +69,6 @@
         margin: 5px;
         padding: 4px;
         font-size: 14px;
-    }
-
-    button {
-        font-size: 14px;
-        width: 94%;
-        border-radius: 0;
-        border: 1px solid black;
-        padding: 8px;
-        margin: 0;
-        margin-top: 10px;
-        margin-left: 3%;
     }
 
     .newTask__colours-button {

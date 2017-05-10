@@ -1,7 +1,14 @@
 <template>
   <div id="app">
+    <div v-show="modal" class="overlay" @click="modal = false"></div>
+    <div v-show="modal" class="modal">
+      <h1>Are you sure?</h1>
+      <button class="ofcourse">OFC</button>
+      <button class="noway" @click="modal = false">NOWAY</button>
+    </div>
+    <button class="clearAll" @click="popModal({ callback: clearAll })">CLEAR</button>
     <new-button :tasks="tasks"></new-button>
-    <board :tasks="tasks"></board>
+    <board :tasks="tasks" :popModal="popModal"></board>
   </div>
 </template>
 
@@ -12,7 +19,8 @@ export default {
   name: 'app',
   data () {
     return {
-      tasks: {}
+      tasks: {},
+      modal: false
     }
   },
   components: {
@@ -25,6 +33,25 @@ export default {
       let data = await response.json();
       return data;
     },
+    clearAll() {
+      this.$socket.emit('clear');
+    },
+    popModal({ event, callback }) {
+      this.modal = true;
+      var not_self_event = event;
+      if (callback != null) {
+        let yes_button = document.querySelector('.ofcourse');
+        let new_yes_button = yes_button.cloneNode(true);
+        yes_button.parentNode.replaceChild(new_yes_button, yes_button);
+        if (not_self_event != null || not_self_event != undefined) {
+          new_yes_button.addEventListener('click', function () {
+            callback(not_self_event);
+          });
+        } else {
+          new_yes_button.addEventListener('click', callback);
+        }
+      }
+    },
     updateTheStuff() {
       this.$socket.emit('updateTasks');
     }
@@ -32,6 +59,9 @@ export default {
   beforeMount() {
     this.$options.sockets.updateTasks = (data) => {
       this.tasks = data;
+    };
+    this.$options.sockets.hideOverlay = (data) => {
+      this.modal = data;
     };
     this.getTasks().then(tasks => {
       this.tasks = tasks;
@@ -78,5 +108,55 @@ li {
 
 a {
   color: #000;
+}
+
+button {
+    font-size: 14px;
+    width: 94%;
+    border-radius: 0;
+    border: 1px solid black;
+    padding: 8px;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 3%;
+}
+
+.ofcourse, .noway, .clearAll {
+  width: auto;
+}
+
+.ofcourse, .noway {
+  transform: translateX(50%);
+}
+
+.clearAll {
+  position: fixed;
+  bottom: 14px;
+  left: 14px;
+  margin: 0;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: black;
+  z-index: 99;
+  opacity: 0.6;
+}
+
+.modal {
+  width: 200px;
+  height: 150px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 2px solid black;
+  padding: 12px;
+  z-index: 100;
 }
 </style>

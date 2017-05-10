@@ -2,7 +2,7 @@
     <li :class="{ task: true, 'task--pink': type == 'bug', 'task--yellow': type == 'story'}" :id="id">
         <h2 class="task__header"><a target="_blank" :href="'http://jira.internal.plus.net/browse/' + name">{{ name }}</a></h2>
         <p class="task__description">{{ description }}</p>
-        <span class="close" @click="removeTask"><span class="circle circle--small circle--red"></span></span>
+        <span class="close" @click="popModal({ event: $event, callback: removeTask })"><span class="circle circle--small circle--red"></span></span>
         <span class="edit" @click="editTask"><span class="">&#9998;</span></span>
     </li>
 </template>
@@ -10,7 +10,7 @@
 <script>
     export default {
         name: 'task',
-        props: [ 'id', 'name', 'description', 'removeTask', 'editTask', 'type' ]
+        props: [ 'id', 'name', 'description', 'removeTask', 'popModal', 'editTask', 'type' ]
     }
 </script>
 
@@ -18,7 +18,7 @@
     .block {
         display: block;
     }
-    
+
     .task {
         text-align: left;
         color: #000;

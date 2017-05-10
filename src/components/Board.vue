@@ -9,6 +9,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.todoList" 
                     :id="item.id" 
@@ -28,6 +29,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.analysisList" 
                     :id="item.id" 
@@ -47,6 +49,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.devList" 
                     :id="item.id" 
@@ -65,6 +68,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.blockedList" 
                     :id="item.id" 
@@ -83,6 +87,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.CRList" 
                     :id="item.id" 
@@ -101,6 +106,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.readyTestList" 
                     :id="item.id" 
@@ -119,6 +125,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.inTestList" 
                     :id="item.id" 
@@ -137,6 +144,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask" 
                     v-for="item in tasks.promoteList" 
                     :id="item.id" 
@@ -155,6 +163,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.mergeList" 
                     :id="item.id" 
@@ -173,6 +182,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.mergedList" 
                     :id="item.id" 
@@ -191,6 +201,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.releaseList" 
                     :id="item.id" 
@@ -209,6 +220,7 @@
                 class="column__list">
                 <task 
                     :removeTask="removeTask"
+                    :popModal="popModal"
                     :editTask="editTask"
                     v-for="item in tasks.doneList" 
                     :id="item.id" 
@@ -226,7 +238,7 @@
     import draggable from 'vuedraggable'
     export default {
         name: 'board',
-        props: [ 'tasks' ],
+        props: [ 'tasks', 'popModal' ],
         components: {
             Task,
             draggable
